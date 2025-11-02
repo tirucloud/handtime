@@ -1,0 +1,42 @@
+name: Deploy Nginx Static Website
+
+on:
+  push:
+    branches:
+      - main   # Trigger on push to main branch
+
+jobs:
+  deploy:
+    name: Build and Run Docker Container
+    runs-on: aaaaaaaa
+
+    steps:
+      # Step 1: Checkout repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Docker
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Step 3: Build Docker image
+      - name: Build Docker image
+        run: |
+          docker build -t nginx-static-site .
+
+      # Step 4: Stop and remove any old container
+      - name: Stop existing container
+        run: |
+          docker rm -f nginx-static || true
+
+      # Step 5: Run new container
+      - name: Run Nginx container
+        run: |
+          docker run -d \
+            --name nginx-static \
+            -p 80:80 \
+            nginx-static-site
+
+      # Step 6: Show running containers
+      - name: Verify running container
+        run: docker ps -a
