@@ -7,8 +7,13 @@ on:
 
 jobs:
   deploy:
+<<<<<<< HEAD
     name: Build and Deploy Nginx Container
     runs-on: ubuntu-latest
+=======
+    name: Build and Run Docker Container
+    runs-on: self-hosted
+>>>>>>> 390084c306cc31cb1a5681c8cd125fdb315407e6
 
     steps:
       # Step 1: Checkout code
