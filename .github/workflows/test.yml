@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     name: Build and Deploy Nginx Container
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       # Step 1: Checkout code
