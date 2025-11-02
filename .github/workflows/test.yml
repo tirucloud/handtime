@@ -54,7 +54,7 @@ jobs:
         run: |
           docker run -d \
             --name nginx-static \
-            -p 80:80 \
+            -p 81:80 \
             nginx-static-site
 
       # Step 8: Verify container is running
