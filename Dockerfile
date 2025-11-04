@@ -1,16 +1,14 @@
+# Use the official lightweight Nginx image
 FROM nginx:alpine
 
-# Set the app
-ENV APP_FOLDER=/var/www/html
+# Set working directory inside the container
+WORKDIR /usr/share/nginx/html
 
-# Set the working directory
-WORKDIR $APP_FOLDER
+# Copy website files to Nginx's default HTML directory
+COPY . .
 
-# Copy your website files to the Nginx HTML directory
-COPY . $APP_FOLDER/
-
-# Expose port 80 for web access
+# Expose port 80 for HTTP traffic
 EXPOSE 80
 
-# Correct CMD for Nginx
+# Start Nginx in the foreground (official default command)
 CMD ["nginx", "-g", "daemon off;"]
