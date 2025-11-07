@@ -8,7 +8,7 @@ pipeline {
       }
       stage("deploy to container") {
          steps{
-          sh 'docker build -t pragjna/handtime .'
+          sh 'docker build -t tirucloud/handtime .'
           sh  'docker rm -f handtime || true'
           sh  'docker run -d --name handtime -p 81:80 tirucloud/handtime'
          }
